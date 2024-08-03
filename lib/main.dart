@@ -1,10 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:payment_app/blocs/navigation_bar/navigation_bar_cubit.dart';
-import 'package:payment_app/ui/auth/auth_gate/login_or_register.dart';
-import 'package:payment_app/ui/auth/register/register_screen.dart';
+import 'package:payment_app/firebase_options.dart';
+import 'package:payment_app/ui/auth/auth_gate/auth_gate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     MultiBlocProvider(
       providers: [
@@ -28,7 +33,7 @@ class MainApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.blue[200],
         appBarTheme: AppBarTheme(backgroundColor: Colors.blue[300]),
       ),
-      home: const LoginOrRegister(),
+      home: const AuthGate(),
     );
   }
 }
