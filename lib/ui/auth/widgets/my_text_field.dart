@@ -55,6 +55,7 @@ class _MyTextFieldState extends State<MyTextField> {
       keyboardType: widget.textInputType,
       obscureText: obscure(),
       validator: widget.validator,
+      controller: widget.controller,
       decoration: InputDecoration(
         label: Text(widget.label),
         border: const OutlineInputBorder(),

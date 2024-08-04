@@ -1,31 +1,27 @@
 class Validators {
   static String? validateName(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Ismni kiriting';
-    }
-    if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
-      return 'Ism faqat harflardan iborat bo\'lishi kerak';
+      return 'Please enter your name';
     }
     return null;
   }
 
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Emailni kiriting';
+      return 'Please enter your email';
     }
-    if (!RegExp(r'^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$')
-        .hasMatch(value)) {
-      return 'Email noto\'g\'ri';
+    if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+      return 'Please enter a valid email';
     }
     return null;
   }
 
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Parolni kiriting';
+      return 'Please enter your password';
     }
-    if (value.length < 8) {
-      return 'Parol kamida 8 ta belgidan iborat bo\'lishi kerak';
+    if (value.length < 6) {
+      return 'Password must be at least 6 characters long';
     }
     return null;
   }
@@ -35,6 +31,7 @@ class Validators {
       return 'Parolni tasdiqlang';
     }
     if (value != password) {
+      print('Tasdiqlash paroli: $value, Asosiy parol: $password');
       return 'Parollar mos kelmadi';
     }
     return null;

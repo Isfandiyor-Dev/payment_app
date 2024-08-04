@@ -9,12 +9,11 @@ class NavigationBarCubit extends Cubit<int> {
 
   List<Widget> pages = [
     const HomeScreen(),
-    const TransferScreen(),
+    TransferScreen(),
     const HistoryScreen(),
   ];
 
   void goToScreen(int index) {
     emit(index);
   }
-
 }

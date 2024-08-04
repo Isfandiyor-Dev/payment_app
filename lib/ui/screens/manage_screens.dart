@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:payment_app/blocs/auth/auth_bloc.dart';
+import 'package:payment_app/blocs/auth/auth_event.dart';
 import 'package:payment_app/blocs/navigation_bar/navigation_bar_cubit.dart';
 
 class ManageScreens extends StatefulWidget {
@@ -17,6 +19,13 @@ class _ManageScreensState extends State<ManageScreens> {
       appBar: AppBar(
         title: const Text("Payment"),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                context.read<AuthBloc>().add(SingOut());
+              },
+              icon: const Icon(Icons.logout))
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.lightBlueAccent,
